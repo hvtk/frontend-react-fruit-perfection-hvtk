@@ -8,6 +8,11 @@ import ijsblokjes from './assets/ijsblokjes.jpg';
 
 function App() {
   return (
+     <>
+     <header>
+     <h1> Fruit perfection </h1>
+     <button type="button"> Shop nu </button>
+     </header>
      <main>
         <Product
             image={citroenen}
@@ -32,6 +37,7 @@ function App() {
              Het wordt gemaakt in een diepvriezer door water in een plastic vorm te laten bevriezen."
          />
      </main>
+     </>
   );
 }
 
