@@ -9,6 +9,7 @@ import ijsblokjes from './assets/ijsblokjes.jpg';
 
 function App() {
     const [messageValue, setMessageValue] = React.useState( '');
+    const [checkedTerms, toggleCheckedTerms] = React.useState(false);
   return (
      <>
      <nav>
@@ -51,13 +52,26 @@ function App() {
          <div className="form-container">
              <h2> Contactformulier </h2>
              <form>
-                 <button type="submit"> Verstuur </button>
+                 <button disabled={!checkedTerms} type="submit"> Verstuur </button>
                  <input
                      type="tekst"
                      placeholder="Vul in"
-                     name="" value={messageValue}
+                     name=""
+                     className={messageValue.length > 20? 'input-error' : ''}
+                     value={messageValue}
                      onChange={(e) => setMessageValue(e.target.value)}
                  />
+                 {messageValue.length > 20 && <p className="error-message"> Dit bericht is te lang! </p> }
+                 <label htmlFor="terms-and-conditions" >
+                     <input
+                         type="checkbox"
+                         name="terms-and-conditions"
+                         id="terms-and-conditions"
+                         checked={checkedTerms}
+                         onChange={() => toggleCheckedTerms(!checkedTerms)}
+                     />
+                     Ik ga akkoord met de algemene voorwaarden
+                 </label>
              </form>
 
          </div>
