@@ -1,17 +1,27 @@
 import Product from "./Product";
 import React from 'react';
 import './App.css';
+import { ReactComponent as ShoppingCart} from './assets/winkelmandje.svg';
 
 import citroenen from './assets/citroenen.jpeg';
 import limoenen from './assets/limoenen.png';
 import ijsblokjes from './assets/ijsblokjes.jpg';
 
 function App() {
+    const [messageValue, setMessageValue] = React.useState( '');
   return (
      <>
+     <nav>
+         <ul>
+             <li> <a href="/"> Shop </a> </li>
+             <li> <a href="/"> Ons verhaal </a> </li>
+             <li> <a href="/"> Blog </a> </li>
+         </ul>
+         <ShoppingCart className="shopping-cart-icon"/>
+     </nav>
      <header>
      <h1> Fruit perfection </h1>
-     <button type="button"> Shop nu </button>
+     <button type="button" onClick={() => console.log("Jij wil shoppen!")}> Shop nu </button>
      </header>
      <main>
         <Product
@@ -37,6 +47,21 @@ function App() {
              Het wordt gemaakt in een diepvriezer door water in een plastic vorm te laten bevriezen."
          />
      </main>
+     <footer>
+         <div className="form-container">
+             <h2> Contactformulier </h2>
+             <form>
+                 <button type="submit"> Verstuur </button>
+                 <input
+                     type="tekst"
+                     placeholder="Vul in"
+                     name="" value={messageValue}
+                     onChange={(e) => setMessageValue(e.target.value)}
+                 />
+             </form>
+
+         </div>
+     </footer>
      </>
   );
 }
