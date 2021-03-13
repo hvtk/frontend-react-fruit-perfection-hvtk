@@ -10,6 +10,13 @@ import ijsblokjes from './assets/ijsblokjes.jpg';
 function App() {
     const [messageValue, setMessageValue] = React.useState( '');
     const [checkedTerms, toggleCheckedTerms] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
+
+    function sendForm() {
+        console.log(`Het bericht: "${messageValue}" is succesvol verzonden.`);
+        setSubmitted(true);
+    }
+
   return (
      <>
      <nav>
@@ -52,7 +59,7 @@ function App() {
          <div className="form-container">
              <h2> Contactformulier </h2>
              <form>
-                 <button disabled={!checkedTerms} type="submit"> Verstuur </button>
+                 <button disabled={!checkedTerms} type="submit" onClick={sendForm}> Verstuur </button>
                  <input
                      type="tekst"
                      placeholder="Vul in"
